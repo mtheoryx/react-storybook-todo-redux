@@ -16,7 +16,7 @@ export const todo = (state, action) => {
                 completed: !state.completed
             };
         default:
-
+            return state;
     }
 };
 export const todos = (state = [], action) => {
