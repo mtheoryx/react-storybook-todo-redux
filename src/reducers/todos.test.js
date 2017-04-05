@@ -1,4 +1,4 @@
-import todos from './todos';
+import { todos } from './todos';
 const deepFreeze = require('deep-freeze');
 
 describe('Adding a todo', () => {
