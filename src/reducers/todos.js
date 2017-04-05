@@ -1,4 +1,4 @@
-export const todo = (state, action) => {
+const todo = (state, action) => {
     switch (action.type) {
         case 'ADD_TODO':
             return {
@@ -15,6 +15,8 @@ export const todo = (state, action) => {
                 ...state,
                 completed: !state.completed
             };
+        case 'DELETE_TODO':
+            return state.id !== action.id;
         default:
             return state;
     }
@@ -26,6 +28,8 @@ export const todos = (state = [], action) => {
                 ...state,
                 todo(undefined, action)
             ];
+        case 'DELETE_TODO':
+            return state.filter(t => todo(t, action));
         case 'TOGGLE_TODO':
             return state.map(t => todo(t, action));
         default:
