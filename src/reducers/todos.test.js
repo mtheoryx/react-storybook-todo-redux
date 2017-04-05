@@ -85,7 +85,7 @@ describe('Toggling a todo', () => {
         ];
 
         deepFreeze(stateBefore);
-        deepfreeze(action);
+        deepFreeze(action);
 
         expect(
             todos(stateBefore, action)
