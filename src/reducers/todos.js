@@ -6,6 +6,15 @@ const todo = (state, action) => {
                 text: action.text,
                 completed: false
             };
+        case 'UPDATE_TODO':
+            if (state.id !== action.id) {
+                return state;
+            }
+
+            return {
+                ...state,
+                text: action.payload
+            }
         case 'TOGGLE_TODO':
             if (state.id !== action.id) {
                 return state;
@@ -28,6 +37,8 @@ export const todos = (state = [], action) => {
                 ...state,
                 todo(undefined, action)
             ];
+        case 'UPDATE_TODO':
+            return state.map(t => todo(t, action));
         case 'DELETE_TODO':
             return state.filter(t => todo(t, action));
         case 'TOGGLE_TODO':

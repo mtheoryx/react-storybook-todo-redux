@@ -126,3 +126,33 @@ describe('Removing a todo', () => {
         ).toEqual(stateAfter);
     });
 });
+describe('Updating a todo', () => {
+    it('should update todo text without mutation', () => {
+        const stateBefore = [
+            {
+                id: 0,
+                text: 'Learn some Redux',
+                completed: false
+            }
+        ];
+        const action = {
+            type: 'UPDATE_TODO',
+            id: 0,
+            payload: 'Learn Redux'
+        };
+        const stateAfter = [
+            {
+                id: 0,
+                text: 'Learn Redux',
+                completed: false
+            }
+        ];
+
+        deepFreeze(stateBefore);
+        deepFreeze(action);
+
+        expect(
+            todos(stateBefore, action)
+        ).toEqual(stateAfter);
+    });
+});
